@@ -4,15 +4,23 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using pshelloazuree.Models;
 
 namespace pshelloazuree.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IConfiguration configuration;
+
+        public HomeController(IConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
         public IActionResult Index()
         {
-            return View();
+            string greeting = configuration["Greeting"];
+            return View("index", greeting);
         }
 
         public IActionResult Privacy()
