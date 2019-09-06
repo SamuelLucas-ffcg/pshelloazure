@@ -23,6 +23,11 @@ namespace pshelloazuree.Controllers
             return View("index", greeting);
         }
 
+        public IActionResult Test()
+        {
+            throw new InvalidOperationException("Sorry, this feature has not yet been implemented.");
+        }
+
         public IActionResult Privacy()
         {
             return View();
